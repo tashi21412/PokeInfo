@@ -75,7 +75,6 @@ $(document).ready(function () {
 	$("#pokeSearch").on("click", function(){
 	var pokemonId = document.getElementById("pokeSearchValue").value;
 	
-	alert(pokemonId);
 			
 	var xhr;
 		//Step 1. Open XHR
@@ -86,10 +85,9 @@ $(document).ready(function () {
 			
 			if(xhr.readyState == 4 && xhr.status == 200){
 				
-				console.log(xhr.responseText);
 				var pokemon = JSON.parse(xhr.responseText);
 				
-				loadIndividualPokemon(pokemon);
+				loadPokemonInfoCard(pokemon);
 			
 				
 			}
@@ -156,6 +154,95 @@ function loadIndividualPokemon(foundPokemon){
 	$("#pokemonCard").show();
 	document.getElementById("pokemonImg").src = foundPokemon.sprites.front_default;
 }
+
+function loadPokemonInfoCard(foundPokemon){
+	document.getElementById("pokemonName").innerHTML = foundPokemon.name;
+	document.getElementById("infoCardPokemon").src = foundPokemon.sprites.front_default;
+
+	//list what type it belongs to
+	var types = foundPokemon.types;
+	var allTypes ="";
+
+	for (i in types){
+		allTypes = allTypes +" "+ types[i].type.name+ "<br>";
+	} 
+	//decide background color
+	var decideBackground = types[0].type.name;
+
+	switch (decideBackground){
+		case 'normal':
+			infoCard.style.background= 'brown';
+			break;
+		case 'fire':
+			infoCard.style.background= '#FF5722';
+			break;
+		case 'water':
+			infoCard.style.background= '#03A9F4';
+			break;
+		case 'grass':
+			infoCard.style.background= '#CAF50';
+			break;
+		case 'electric':
+			infoCard.style.background= '#FFEB3B';
+			break;
+		case 'fighting':
+			infoCard.style.background= '#FF9800';
+			break;
+		case 'poison':
+			infoCard.style.background= '#4CAF50';
+			break;
+
+		case 'ground':
+			infoCard.style.background= '#795548';
+			break;
+
+		case 'flying':
+			infoCard.style.background= '#81D4FA';
+			break;
+		case 'psychic':
+			infoCard.style.background= '#EEEEEE';
+			break;
+		case 'bug':
+			infoCard.style.background= '#CDDC39';
+			break;
+
+		case 'rock':
+			infoCard.style.background= '#607D8B';
+			break;
+
+		case 'dragon':
+			infoCard.style.background= '#AB47BC';
+			break;
+
+		case 'dark':
+			infoCard.style.background= '#212121';
+			break;
+
+		case 'steel':
+			infoCard.style.background= '#607D8B';
+			break;
+		case 'fairy':
+			infoCard.style.background= '#EC407A';
+		break;
+		default:
+			infoCard.style.background='#1DE9B6';
+
+	}
+
+
+	document.getElementById("type").innerHTML = "Type: "+ allTypes;
+	document.getElementById("hp").innerHTML = foundPokemon.id;
+	document.getElementById("heightweight").innerHTML = "Height: "+foundPokemon.height + "cm Weight: "+ foundPokemon.weight + "kg";
+
+	// lists all it's power
+	var moves = foundPokemon.abilities;
+	var allAbilities="";
+	for (i in moves){
+		allAbilities = allAbilities +" "+ moves[i].ability.name +"<br>";
+	} 
+	document.getElementById("moves").innerHTML = allAbilities;
+}
+
 function getAll(){
 	$('#contain').empty();
 	$("#content").show();
@@ -183,4 +270,29 @@ function pikaDisappear(){
 function curtainOff(){
 	$(".curtain").fadeOut("slow");
 }
+$(document).ready(function(){
+	$("#pokemonName").click( function(){
+		
+		$("#morePokeInfo").show();
+	
+	});
+});
+var aud = document.getElementById("myAud"); 
+$(document).ready(function(){
+	$("#play").click( function(){
+		aud.play();
+		$("#play").hide();
+		$("#pause").show();
+	
+	});
+});
+$(document).ready(function(){
+	$("#pause").click( function(){
+		aud.pause();
+		$("#play").show();
+		$("#pause").hide();
+	
+	});
+});
+
 //window.onload = function(){getPokemon(limit,offset);};

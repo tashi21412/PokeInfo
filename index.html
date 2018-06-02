@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="pokemon.css">
 	<link href='https://fonts.googleapis.com/css?family=Sue Ellen Francisco' rel='stylesheet'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	
 </head>
 <style>
@@ -38,8 +39,15 @@
 	
 	<div id="intro" class="intro" style = "width:80%; margin-top:10px" >
 		<div class="introImgContainer" style=" float: left; margin-right:20px;">
+			<a href="#" id = "pause"class="pokesong"hidden="true"><i class="material-icons" style="font-size:48px;color:white" hidden="true">pause</i></a>
+			<a href="#" id = "play"class="pokesong"><i class="material-icons pokesong" style="font-size:48px;color:white">play_arrow</i></a>
 			<img src="image/poke.png" style="height:200px; width:200px; padding:40px; background:#FFEB3B; border-radius:15px;">
 			
+			<audio id="myAud">
+			  <source src="horse.ogg" type="audio/ogg">
+			  <source src="image/poke_song.mp3" type="audio/mpeg" >
+		
+			</audio>
 		</div>
 		<p style="font-family:'Sue Ellen Francisco';font-size:18px; ">
 				Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
@@ -59,7 +67,22 @@
 			<input type="text" id = "pokeSearchValue" placeholder="Name or ID" style="float: left; margin-top:10px;">
 			<a href="#"><i class="fa fa-search" id = "pokeSearch"  style="font-size:21px; color:#F5F5F5; padding:4px; float:left; background:#FF7043; margin-top:10px;"></i>
 		</div>
-		
+
+		<!--=====InfoCard==========================================================================================================-->
+		<div id ="infoCard" class = "infoCard">
+  			<p id="pokemonId"> Pokemon Number</p>
+  			<img src="#" id="infoCardPokemon" alternate="pokemon">
+  			<h2 id="pokemonName">Pokemon Name</h2>
+
+  			<div id="morePokeInfo" class = "morePokeInfo" hidden="true">
+	  			<ul>
+		  			<li id = "type">Type</li>
+		  			<li id = "hp">HP</li>
+		  			<li id = "heightweight">Height And Weight </li>
+		  			<li id= "moves">Moves</li>
+	  			</ul>
+  			</div>
+  		</div>
 		
 		
 		
@@ -85,6 +108,7 @@
 	</div>
 	</center>
 	
+<!--===============================================================================================================-->
 
 	
   

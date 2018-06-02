@@ -85,4 +85,18 @@ ul, li{
 	
 }
 
+.infoCard{
+	border-radius: 10px;
+	border: 1px solid white;
+	padding: 5px;
+	overflow:hidden;
+	font-family:'Sue Ellen Francisco';
+	font-size:25px;
+	float: left;
+}
+.pokesong{
+	position:absolute;
+	z-index:1;
+}
+
 
